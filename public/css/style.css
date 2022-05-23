@@ -1,0 +1,1397 @@
+/* ===== Global ===== */
+:root{
+    --darkBlue : #20295C;
+    --lightBackgroundBlue : #E2F3F5;
+    --bodyBlue : #C8EFF3
+}
+
+*{
+    color: var(--darkBlue);
+    font-family: 'Sora', 'sans-serif';
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+
+body{
+    background-color: var(--lightBackgroundBlue);
+}
+
+/* container 90% dari 1366px */
+.container{
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.formElement{
+    display: flex;
+    flex-direction: column;
+    margin: 20px 0px 20px 0px;
+}
+
+.formElement label{
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 18;
+}
+
+.formElement input[type=text], .formElement input[type=password], .formElement input[type=email], .formElement input[type=number], .formElement input[type=date]{
+    border: none;
+    background: #fff;
+    border-radius: 5px;
+    color: var(--darkBlue);
+    opacity: .7;
+    width: 100%;
+    height: 35px;
+    padding: 10px;
+    box-sizing: border-box;
+    font-size: 18px;
+}
+
+.formElement input[type=number], .formElement input[type=date]{
+    border: 1px solid var(--darkBlue);
+}
+
+.formElement input[type=text]:focus, .formElement input[type=password]:focus, .formElement input[type=email]:focus, .formElement input[type=number]:focus, .formElement input[type=date] .formElement textarea:focus, .blueFocusBorder{
+    outline: none !important;
+    border: 2px var(--darkBlue) solid;
+    opacity: .8;
+    box-shadow: 0 0 5px var(--darkBlue);
+}
+
+/* menghilangkan opacity untuk field yang memiliki value */
+.formElement input[type=text]:not(:placeholder-shown), .formElement input[type=password]:not(:placeholder-shown), .formElement input[type=email]:not(:placeholder-shown), .formElement textarea:not(:placeholder-shown), .formElement input[type=number]:not(:placeholder-shown), .formElement input[type=date]:not(:placeholder-shown){
+    opacity: 1;
+}
+
+.selectBox{
+    width: 100%;
+}
+
+.selectField{
+    background: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    min-height: 35px;
+    width: 100%;
+    padding: 7px 10px;
+    box-sizing: border-box;
+    font-size: 18px;
+    padding-bottom: 10px;
+    position: relative;
+}
+
+.selectField p{
+    display: inline-block;
+    max-width: 97%;
+}
+
+.selectField .dropdownArrow{
+    width: 12px;
+    height: 12px;
+    box-sizing: border-box;
+    position: absolute;
+    right: 13px;
+    top: 12px;
+    transition: transform 0.5s;
+}
+
+.selectBox .optionList{
+    position: absolute;
+    background: #fff;
+    border-radius: 5px;
+    list-style-type: none;
+    margin-top: 10px;
+    overflow: auto;
+    padding: 10px 0px;
+    max-height: 150px;
+    z-index: 99;
+}
+
+/* jika selectbox ada pada modal, maka position tidak absolute, agar option list tidak melebihi screen */
+.modalBody .optionList{
+    position: relative;
+}
+
+.selectBox .blueFocusBorder{
+    opacity: 1;
+}
+
+.options{
+    box-sizing: border-box;
+    cursor: pointer;
+    padding: 10px 20px;
+}
+
+.options:hover , .selected{
+    background: #EDEFFC;
+}
+
+.hide{
+    display: none;
+}
+
+.rotate{
+    transform: rotate(180deg);
+}
+
+.btn{
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 18px;
+    font-weight: normal;
+    padding: .5em 1em;
+}
+
+.btn img{
+    vertical-align: bottom;
+}
+
+.btnDarkBlue{
+    background: var(--darkBlue);
+    border: var(--darkBlue) 3px solid !important;
+    color: #fff;
+}
+
+.btnDarkBlue:hover{
+    background: #464F7E;
+    border: #464F7E 3px solid !important;
+    /* color: var(--darkBlue); */
+}
+
+.btnRed{
+    background: #E50000;
+    border: #E50000 3px solid !important;
+    color: #fff;
+}
+
+.btnRed:hover{
+    background: #EF3131;
+    border: #EF3131 3px solid !important;
+}
+
+.btnGreen{
+    background: #00BB07;
+    border: #00BB07 3px solid !important;
+}
+
+.btnGreen:hover{
+    opacity: .8;
+}
+
+.btnOrange{
+    background: #FFBA33;
+    border: #FFBA33 3px solid !important;
+    color: #fff;
+}
+
+.btnLogin:hover{
+    opacity: 1;
+    background: inherit;
+    border: var(--darkBlue) 3px solid !important;
+    color: var(--darkBlue);
+}
+
+.errorMessage, .textRed{
+    color: red;
+}
+
+.textGreen{
+    color: #00BB07;
+}
+
+.redBorder{
+    border: 1px solid red !important;
+}
+
+.redBorder:focus{
+    outline: none !important;
+    border: 1px red solid !important;
+    opacity: .8;
+    box-shadow: 0 0 5px red !important;
+}
+
+.alert{
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin: 10px 0px;
+}
+
+.alert-success{
+    color: #155724;
+    background: #acedba;
+    border-color: #7ce795;
+}
+
+.alert-failed{
+    color: #721c24;
+    background: #ffb4bb;
+    border-color: #f5c6cb;
+}
+
+.blueBody{
+    background: var(--bodyBlue);
+    border-radius: 20px;
+    margin: 0 0 3em 0;
+    padding: 1.5em;
+}
+
+.flexBetween{
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+.table{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table thead{
+    background: var(--darkBlue);
+}
+
+.table thead th{
+    color: #fff;
+    padding: 10px;
+}
+
+.table tbody tr:nth-child(even){
+    background: #E2F3F5;
+}
+
+.table .tableNumber{
+    text-align: left;
+    width: 5%;
+}
+
+.table tbody td{
+    padding: 10px;
+}
+
+/* agar button edit dan delete berdampingan */
+.table .actionColumn{
+    min-width: 100px;
+    text-align: center;
+}
+
+.actionColumn .btn{
+    padding: .1em .2em;
+}
+
+.modal{
+    background: rgba(0,0,0,0.2);
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    padding-top: 100px;
+    z-index: 2;
+}
+
+.modalHeader, .modalFooter{
+    padding: 10px 20px;
+}   
+
+.modalContent{
+    background: #fff;
+    border-radius: 12px;
+    margin: 0 auto;
+    width: 50%;
+}
+
+.modalHeader{
+    background-color: var(--darkBlue);
+    border-radius: 10px 10px 0px 0px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.modalHeader img{
+    width: 1.5em;
+    height: auto;
+    margin-right: 7px !important;
+}
+
+.modalHeader span{
+    color: #fff;
+    font-size: 20px;
+}
+
+.closeModal{
+    cursor: pointer;
+}
+
+.modalBody{
+    padding: 0px 20px;
+    overflow-y: auto;
+    max-height: 70vh;
+}
+
+.modalBody .formElement label{
+    font-size: 18px;
+}
+
+.modalBody .formElement input[type=text], .modalBody .formElement input[type=password], .modalBody .formElement input[type=email], .modalBody .formElement textarea{
+    border: var(--darkBlue) 1px solid;
+}
+
+.modalBody .formElement textarea{
+    background: #fff;
+    border-radius: 5px;
+    color: var(--darkBlue);
+    /* opacity: .7; */
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    font-size: 18px;
+}
+
+.modalBody .formElement .selectField{
+    border: 1px solid var(--darkBlue);
+}
+
+.modalFooter{
+    display: flex;
+    justify-content: flex-end;
+    padding-bottom: 20px;
+}
+
+.modalFooter .modalBatal{
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: rgba(0,0,0,0.6);
+    font-size: 18px;
+    margin-right: 10px;
+    padding: 10px 20px;
+}
+
+.modalFooter .modalBatal:hover{
+    color: rgba(0,0,0,0.4);
+}
+
+.modalFooter .modalSubmit{
+    border-radius: 15px;
+}
+
+.preloader{
+    visibility: hidden;
+    background: var(--lightBackgroundBlue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    z-index: 2;
+    top: 0;
+}
+
+.preloader img{
+    width: 300px;
+    animation: loading 2s infinite ease-in-out;
+}
+
+.preloader h1{
+    font-weight: 500;
+    animation: pulseing 2s infinite ease-in-out;
+}
+
+@keyframes loading{
+    50%{
+        opacity: .3;
+        transform : scale(0.9) translateY(5px);
+    }
+}
+
+@keyframes pulseing{
+    50%{
+        opacity: .7;
+    }
+}
+
+/* ===== Landing Page ===== */
+/* navbar untuk landing page */
+.mainNav{
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.mainNav ul{
+    list-style-type: none;
+    margin: 0;
+}
+
+.mainNav ul li{
+    display: inline;
+}
+
+.mainNav ul li:last-child{
+    margin-left: 50px;
+}
+
+.mainNav ul li a:hover{
+    opacity: 80%;
+}
+
+.navLinkActive{
+    font-weight: bold;
+}
+
+/* box tulisan selamat datang dan ilustrasi pohon */
+.landingContent{
+    display: flex;
+    margin-top: 80px;
+}
+
+/* ilustrasi pohon */
+.landingContent img{
+    width: 514px;
+    height: 504px;
+}
+
+/* tulisan selamat datang */
+.welcomeMessage h1{
+    font-size: 48px;
+}
+
+.welcomeMessage h6{
+    margin-top: 30px;
+    font-size: 18px;
+    font-weight: normal;
+}
+
+.welcomeMessage .callToAction{
+    margin-top: 50px;
+}
+
+
+/* button call to action */
+.callToAction a{
+    background: var(--darkBlue);
+    border: var(--darkBlue) 3px solid !important;
+    color: #fff;
+    font-size: 24px;
+    padding: 20px 70px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+/* call to action register & ikuti pengujian */
+.callToAction a:hover{
+    background: inherit;
+    border: 3px solid var(--darkBlue);
+    color: var(--darkBlue);
+}
+
+/* call to action login */
+.callToAction a:last-child{
+    background: inherit;
+    border: 3px solid var(--darkBlue);
+    color: var(--darkBlue);
+    margin-left: 20px;
+}
+
+.callToAction a:last-child:hover{
+    background: var(--darkBlue);
+    border: var(--darkBlue) 3px solid !important;
+    color: #fff;
+}
+
+/* ======= Login Page ======= */
+.loginBody{
+    border-radius: 20px;
+    display: flex;
+    margin-top: 70px;
+    margin-bottom: 70px;
+    background-color: var(--bodyBlue);
+}
+
+.bodyLeft{
+    flex: 1;
+    padding: 50px 50px 10px 50px;
+}
+
+.bodyLeft h3{
+    font-size: 36px;
+}
+
+.bodyLeft h6{
+    font-size: 18px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    font-weight: normal;
+}
+
+/* tulisan belum punya akun? */
+.bodyLeft form a{
+    color: #0A23B4;
+    display: inline-block;
+    /* agar elemen berada ditengah */
+    margin: 30px 0 30px 50%;
+    transform: translateX(-50%);
+}
+
+.bodyLeft a:hover{
+    opacity: .8;
+}
+
+.bodyLeft input[type=submit]{
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 24px;
+    font-weight: bold;
+    padding: 10px 20px;
+    width: 100%;
+}
+
+.bodyRight{
+    flex: 1;
+    padding: 0px 50px 10px 50px;
+
+}
+
+.bodyRight img{
+    width: 555px;
+    height: 507px;
+}
+
+/* ====== Register ====== */
+.registerBody{
+    padding: 50px 50px 40px 50px;
+}
+
+.infoAkun{
+    border-radius: 0px 20px 20px 0px;
+    background: var(--darkBlue);
+    flex: 1;
+    padding: 50px 50px 40px 50px;
+}
+
+.infoAkun > *{
+    color: #fff;
+}
+
+.infoAkun div > *{
+    color: #fff;
+}
+
+.infoAkun div h1:first-child{
+    font-size: 36px;
+}
+
+.infoAkun h1{
+    font-size: 34px;
+}
+
+.infoAkun h1:nth-child(3){
+    margin-top: 20px;
+}
+
+.infoAkun h6{
+    font-size: 18px;
+    font-weight: lighter;
+    margin-top: 10px;
+    margin-bottom: 40px;
+}
+
+.infoAkun p{
+    font-size: 24px;
+    font-weight: lighter;
+    margin-top: 20px;
+}
+
+/* agar icon dan label dapat bersebelahan */
+.iconAndLabel{
+    display: flex;
+    align-items: center;
+}
+
+.iconAndLabel img{
+    margin-right: 20px;
+}
+
+/* =================================== Partisipan ===================================== */
+/* ==== Navbar Partisipan ==== */
+.partisipanNav ul{
+    position: relative;
+}
+
+#navDropdownPartisipan{
+    overflow: hidden;
+    padding-bottom: 20px;
+}
+
+#navDropdownPartisipan #imgDropdown{
+    cursor: pointer;
+    position: absolute;
+    right: -3px;
+    top: -10px;
+    margin-right: 30px;
+    padding-bottom: 20px;
+}
+
+#imgDropdown img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.partisipanNav .navDropdownContent{
+    display: none;
+    background: #fff;
+    box-sizing: border-box;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    border-radius: 5px;
+    margin-top: 20px;
+    margin-right: -20px;
+    min-width: 140px;
+    padding: 10px 20px;
+    position: absolute;
+    right: -1px;
+    z-index: 1;
+}
+
+.navDropdownContent .iconAndLabel{
+    margin: 10px 0px;
+} 
+
+/* tulisan edit profil dan login */
+.navDropdownContent .iconAndLabel a{
+    margin-right: 0px;
+    font-size: 18px;
+}
+
+.navDropdownContent .iconAndLabel img{
+    margin-right: 10px;
+}
+
+/* tulisan logout */
+.navDropdownContent .iconAndLabel:nth-child(2) img{
+    margin-left: -3px;
+    margin-right: 12px;
+}
+
+/* link home pada navbar partisipan */
+.partisipanNav ul li a{
+    margin-right: 60px;
+}
+
+/* ==== Home ==== */
+.welcomePartisipan h6{
+    font-size: 24px;
+}
+
+.ctaPartisipan{
+    border-radius: 20px;
+    display: inline-block;
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 30px;
+    padding: 30px;
+}
+
+.ctaPartisipan:hover{
+    background: var(--lightBackgroundBlue);
+    color: var(--darkBlue);
+}
+
+/* ==== Ikut Pengujian ==== */
+.bodyIkutPengujian h2{
+    margin-bottom: 10px;
+    font-size: 30px;
+    text-align: center;
+}
+
+.bodyIkutPengujian h2:nth-child(4){
+    margin-top: 30px;
+}
+
+.bodyIkutPengujian p{
+    font-size: 20px;
+    margin: 20px 10px;
+    text-align: left;
+}
+
+.bodyIkutPengujian{
+    text-align: center;
+}
+
+.bodyIkutPengujian input[type=text]{
+    background: #fff;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    color: #FF0000 !important;
+    font-size: 30px;
+    font-weight: bold;
+    height: 91px;
+    margin-top: 10px;
+    text-align: center;
+    width: 645px;
+}
+
+.bodyIkutPengujian input[type=text]:focus{
+    outline: none;
+    border: 2px var(--darkBlue) solid;
+    box-shadow: 0 0 5px var(--darkBlue);   
+}
+
+#ikutPengujianBtns{
+    margin-top: 30px;
+}
+
+#ikutPengujianBtns a, #ikutPengujianBtns input[type=submit]{
+    background: var(--darkBlue);
+    border-radius: 20px;
+    border: 3px var(--darkBlue) solid;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 2em;
+}
+
+#ikutPengujianBtns a:hover, #ikutPengujianBtns input[type=submit]:hover{
+    background: var(--bodyBlue);
+    border: 3px var(--darkBlue) solid;
+    color: var(--darkBlue);
+}
+
+#ikutPengujianBtns a:nth-child(1){
+    background: var(--bodyBlue) !important;
+    box-sizing: border-box;
+    color: var(--darkBlue) !important;
+    margin-right: 20px;
+}
+
+#ikutPengujianBtns a:nth-child(1):hover{
+    background: var(--darkBlue) !important;
+    color: #fff !important;
+}
+
+/* Halaman Soal */
+.boxHalamanSoal{
+    margin: 20px 0px 80px 0px;
+}
+
+.headerSoal{
+    font-size: 36px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.soal h2{
+    font-size: 34px;   
+}
+
+.soal p{
+    font-size: 24px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.node{
+    box-sizing: border-box;
+    cursor: pointer;
+    margin: 10px 0;
+    font-weight: 18px;
+    padding: 10px 20px;
+}
+
+.node:hover{
+    background: #A4E7EE;
+}
+
+.nodeKonfigurasi{
+    margin: 0;
+}
+
+.between{
+    display: flex;
+    align-items: center;
+    height: 12px;
+}
+
+.between hr{
+    height: 5px;
+    background: #000;
+    border: none;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: none;
+}
+
+.betweenHover{
+    border-left: #000 5px solid;
+    border-right: #000 5px solid;
+}
+
+.noChild{
+    align-items: center;
+    background: #99EAF2;
+    display: flex;
+    justify-content: space-between;
+}
+
+.noChild:hover{
+    background: #8BE0E9;
+}
+
+.noChild .btnPilihJawaban {
+    background: #26d12b;
+    border-radius: 5px;
+    box-sizing: border-box;
+    color: #fff;
+    visibility: hidden;
+    font-size: 15px;
+    padding: 5px 10px;
+}
+
+.noChild .btnPilihJawaban:hover{
+    background: #4ce951;
+}
+
+.dragHover{
+    background: #3b939c !important;
+}
+
+.hasChild{
+    background: #C8EFF3;
+}
+
+.hasChild img{
+    margin-right: 10px;
+    height: 10px;
+    transition: transform 0.2s;
+    transform: rotate(-90deg);
+    width: 10px;
+}
+
+.collapseHeader{
+    transition: transform 0.5s;
+}
+
+
+#lewatiPertanyaan{
+    background: #FF0000;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: bold;
+    font-size: 18px;
+    margin: 20px 0px;
+    padding: 10px 20px;
+} 
+
+#lewatiPertanyaan:hover{
+    background: #FF2222;
+}
+
+#lewatiPertanyaan img{
+    vertical-align: middle;
+    margin-left: 5px;
+}
+
+#progressSoal{
+    height: 10px;
+    background: #26d12b;
+}
+
+/* Edit Profile */
+#imageUser{
+    margin: 30px 0px 30px 50%;
+    transform: translateX(-50%);
+    height: 133px;
+    width: 133px;
+    border-radius: 50%;
+}
+
+#editAndGantiPassword{
+    display: flex;
+    justify-content: space-between;
+}
+
+#editAndGantiPassword > div{
+    flex: 1;
+    padding: 20px 20px 10px 20px;
+}
+
+#editAndGantiPassword div h3{
+    font-size: 28px;
+    text-align: center;
+}
+
+#editAndGantiPassword input[type=submit]{
+    margin-top: 10px;
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+
+/* ================================ Tester ============================= */
+/* Sidebar Tester */
+#sidebar{
+    /* display: none; */
+    background: #0E153A;
+    box-sizing: border-box;
+    height: 100vh;
+    overflow: hidden;
+    width: 300px;
+    transition: 0.5s;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    position: fixed;
+}
+
+#sidebarTopIcons{
+    display: flex;
+    justify-content: space-between;
+    padding: 30px 20px 0px 20px;
+}
+
+#sidebarTopIcons #sidebarHamburger{
+    cursor: pointer;
+}
+
+#sidebarUserInfo{
+    color: #fff !important;
+    text-align: center;
+    padding: 20px 20px 40px 20px;
+}
+
+#sidebarUserInfo img{
+    height: 81px;
+    width: 81px;
+    border-radius: 50%;
+}
+
+#sidebarUserInfo h4, #sidebarUserInfo h5, #sidebarLinks .iconAndLabel h3{
+    color: #fff;
+    font-weight: 300;
+}
+
+/* untuk tulisan email */
+#sidebarUserInfo h5{
+    font-weight: lighter;
+}
+
+#sidebarLinks{
+    background: #20295C;
+}
+
+#sidebarLinks .iconAndLabel{
+    padding: 20px;
+}
+
+#sidebarLinks .iconAndLabel:hover, .sidebarLinkActive{
+    background: #464F7E;
+}
+
+/* kondisi jika sidebar ditutup */
+.sidebarClosed{
+    width: 70px !important;
+}
+
+.sidebarClosed #sidebarUserInfo h4, .sidebarClosed #sidebarUserInfo h5, .sidebarClosed #sidebarLinks .iconAndLabel h3, .sidebarClosed #sidebarTopIcons img {
+    display: none;
+}
+
+.sidebarClosed #sidebarHamburger{
+    display: block !important;
+    flex-grow: 1;
+    width: 15px;
+    height: 12px;
+}
+
+.sidebarClosed #sidebarUserInfo{
+    padding: 20px 0px !important;
+}
+
+.sidebarClosed #sidebarUserInfo img{
+    width: 40px;
+    height: 40px;
+}
+
+.sidebarClosed #sidebarLinks .iconAndLabel{
+    justify-content: space-around;
+}
+
+.sidebarClosed #sidebarLinks img{
+    margin-right: 0px ;
+}
+
+/* untuk content dari sidebar */
+.sideContainer{
+    margin-top: 30px;
+    margin-left: 340px;
+    margin-right: 40px;
+    transition: .5s;
+}
+
+.sideContainerClosed{
+    margin-left: 110px !important;
+}
+
+/* === Konfigurasi Tree === */
+.testerSubHeader{
+    margin: 40px 0px 20px 0px;
+}
+
+.bodyInformasiPengujian > h2 {
+    color: red;
+    font-size: 36px;
+    text-align: center;
+    margin: 30px 0px;
+}
+
+.bodyInformasiPengujian > p{
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.bodyInformasiPengujian > .btn{
+    font-size: 24px;
+    font-weight: bold;
+    margin: 20px 0px 0px 50%;
+    padding: 10px 50px;
+    transform: translateX(-50%);
+}
+
+.informasiPengujian p{
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.informasiButton{
+    display: flex;
+    margin: 10px 0;
+}
+
+.informasiButton .btnOrange{
+    margin-right: 20px;
+}
+
+.tableTask{
+    margin-top: 20px;
+}
+
+.tableTask tr td{
+    text-align: center;
+}
+
+.taskKosong{
+    text-align: center; 
+    height: 100px; 
+    background: #E2F3F5; 
+    opacity: .50; 
+}
+
+.taskKosong h1{
+    font-weight: 500;
+    font-size: 24px;
+}
+
+.taskKosong img{
+    width: 150px;
+}
+
+.bodyKonfigurasiTask .konfigurasiButton a:first-child{
+    margin-right: 10px;
+}
+
+.bodyKonfigurasiTree{
+    padding-bottom: 200px;
+}
+
+.paginationLinks nav{
+    font-weight: bold;
+    margin: 10px 10px 0px 10px;
+}
+
+.paginationLinks nav span{
+    display: none;
+}
+
+.nodeButton a{
+    font-size: 14px;
+    margin-left: 5px;
+    padding: 5px;
+    vertical-align: middle;
+}
+
+.nodeButton a img{
+    width: 18px;
+}
+
+.addNode{
+    display: none;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 2px var(--darkBlue) solid;
+    background-color: inherit;
+    font-size: 18px;
+    margin: 10px 0;
+    padding: 10px 10px;
+    width: 100%;
+}
+
+.addRootNode{
+    display: block;
+}
+
+/* trigger untuk hide atau show input node */
+.showFieldAddNode img{
+    transform: rotate(45deg) ;
+}
+
+.generateTreeHeader h4{
+    font-weight: normal;
+    margin-top: 5px;
+    margin-bottom: -10px;
+}
+
+/* style keterangan pada generate tree */
+.bodyGenerateTree span{
+    margin-top: -10px;
+    display: inline-block;
+}
+
+.bodyGenerateTree span:nth-child(4){
+    margin-top: 5px;
+}
+
+.formGenerateTree{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.formGenerateTree .formElement:nth-child(1){
+    flex: 1;
+}
+
+.formGenerateTree .formElement{
+    flex: .5;
+}
+
+.btnGenerateTree{
+    margin-top: 25px;
+    padding: 0.2em 1em;
+}
+
+.bodyKonfigurasiTree .collapseHeader{
+    display: flex;
+    align-items: center;
+}
+
+.nodeButtonCollapsible{
+    display: inline-block;
+    margin-left: auto;
+}
+
+/* agar button pada collapse header tidak memiliki animasi */
+.nodeButtonCollapsible img{
+    margin-right: 0;
+    height: auto;
+    transform: none !important;
+}
+
+/* untuk membentuk gambar plus pada trigger addnode */
+.nodeButtonCollapsible .showFieldAddNode img{
+    transform: rotate(45deg) !important;
+}
+
+/* === Hasil Pengujian ===*/
+#btnModalPathTaken{
+    margin-bottom: 1em;
+}
+
+#modalDetailHasil .modalContent{
+    width: 90%;
+}
+
+#modalDetailHasil .modalBody{
+    padding: 20px;
+}
+
+.keteranganPath span{
+    display: block;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.tableDetailHasil{
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.tableDetailHasil th{
+    padding: 10px;
+    border-bottom: 1px solid var(--darkBlue);
+}
+
+.tableDetailHasil td{
+    padding: 15px;
+    text-align: center;
+    max-width: 300px;
+}
+
+.tableDetailHasil tr:nth-child(even){
+    background: #e9ecff;
+}
+
+.selectDanDetailHasil{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5em;
+}
+
+.selectDanDetailHasil .formElement{
+    flex: 2;
+}
+
+.btnExportHasil, .confirmExport{
+    background: #13A856;
+    color: #ffffff;
+    margin-top: 1.5em;
+}
+
+.btnClearHasil{
+    margin: -20px 0 20px 0;
+}
+
+.bodyHasil h2{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.emptyNotice{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    opacity: .50;
+}
+
+.emptyNotice img{
+    width: 300px;
+}
+
+.emptyNotice h1{
+    font-weight: 500;
+}
+
+.chartAndTable{
+    display: flex;
+    gap: 1em;
+    align-items: center;
+}
+
+/* style div table */
+.chartAndTable div:nth-child(2){
+    flex-grow: 1;
+}
+
+#chartTime{
+    margin: 20px 0;
+    flex-grow: 1;
+}
+
+#keteranganTime{
+    flex-grow: 1;
+}
+
+#keteranganTime span{
+    font-size: 18px;
+}
+
+#keteranganTime h3{
+    margin-top: 1em;
+    font-weight: 500;
+}
+
+#keteranganTime h3:nth-child(1){
+    font-weight: bolder;
+    font-size: 20px;
+    margin-top: 0;
+}
+
+.tableScroll{
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.tableScroll thead{
+    position: sticky;
+    top: 0;
+}
+
+.tableKeterangan{
+    text-align: left;
+}
+
+.sukses td{
+    color: #00BB07;
+}
+
+.gagal td{
+    color: #FF0000;
+}
+
+.tidakDijawab td{
+    color: #4F4F4F;
+}
+
+/* === Halaman Informasi Pengujian === */
+.informasiPengujianBody h6{
+    font-size: 18px;
+    font-weight: normal;
+    margin-top: 10px;
+}
+
+#formInformasiPengujian input[type=number]{
+    border: 0;
+}
+
+.checkboxTree{
+    cursor: pointer;
+    width: 28px;
+    height: 31px;
+    vertical-align: middle;
+}
+
+#formDeleteHeader{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+#boxPilihSemua{
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#boxPilihSemua span{
+    cursor: pointer;
+}
+
+#boxPilihSemua span:hover{
+    color: #464F7E;
+}
+
+.formGenerateTree input[type=text]{
+    opacity : 1;
+}
