@@ -18,7 +18,7 @@ class LandingController extends Controller
 
     public function index(){
         $data['title'] = "Tree Testing";
-
+        
         return view("mainpage.landing",$data);
     }
 

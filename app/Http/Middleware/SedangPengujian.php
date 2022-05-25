@@ -17,8 +17,13 @@ class SedangPengujian
     public function handle(Request $request, Closure $next)
     {
         if(session()->has('sedangPengujian') && $request->url() != '/partisipan/mulaiPengujian'){
-            return back();
+            return redirect('partisipan/mulaiPengujian?kodePengujian='.session()->get('kodePengujianFull'));
         }
+        
+        if(session()->has('percobaanPengujian') && $request->url() != '/partisipan/percobaanPengujian'){
+            return redirect('partisipan/percobaanPengujian');
+        }
+        
         return $next($request);
     }
 }

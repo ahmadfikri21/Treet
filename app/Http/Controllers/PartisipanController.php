@@ -42,11 +42,11 @@ class PartisipanController extends Controller
             'kodePengujian' => 'required'
         ]);
         
-        $kode_pengujian = $validate['kodePengujian'];
+        $kodePengujianFull = $validate['kodePengujian'];
         // mengambil kode string dari $kode_pengujian
-        $kode_string = substr($kode_pengujian,0,3);
+        $kode_string = substr($kodePengujianFull,0,3);
         // mengambil angka kode pengujian
-        $kode_pengujian = substr($kode_pengujian,3);
+        $kode_pengujian = substr($kodePengujianFull,3);
         
         // mengecek apakah kode pengujian dan kode string ada di database
         if(Tester::where('kode_pengujian','=', $kode_pengujian)->where('kode_string','=', $kode_string)->get()->isNotEmpty()){
@@ -69,6 +69,7 @@ class PartisipanController extends Controller
                     $data['task'] = Task::where('kode_pengujian', '=', $kode_pengujian)->get();
                     
                     $request->session()->put('sedangPengujian',$kode_pengujian);
+                    $request->session()->put('kodePengujianFull',$kodePengujianFull);
         
                     return view("partisipan.halamanSoal", $data);
                 }else{
@@ -117,11 +118,13 @@ class PartisipanController extends Controller
     // fungsi untuk menyimpan jawaban ke database, dipanggil oleh request ajax
     public function selesaiPengujian(Request $request, $percobaan = false){
         $request->session()->forget('sedangPengujian');
+        $request->session()->forget('kodePengujianFull');
 
         // if untuk cek apakah percobaan pengujian atau bukan
         if(!$percobaan){
             return redirect('partisipan/ikutiPengujian')->with('success', 'Selamat ! anda telah menyelesaikan pengujian, silahkan hubungi tester anda untuk mengetahui hasil pengujian secara keseluruhan');
         }else{
+            $request->session()->forget('percobaanPengujian');
             return redirect('partisipan/ikutiPengujian')->with('success', 'Anda telah menyelesaikan percobaan pengujian !');
         }
 
@@ -144,7 +147,7 @@ class PartisipanController extends Controller
         // mengambil data task dari model task
         $data['task'] = Task::where('kode_pengujian', '=', $kode_pengujian)->get();
         
-        $request->session()->put('sedangPengujian',$kode_pengujian);
+        $request->session()->put('percobaanPengujian',$kode_pengujian);
 
         return view("partisipan.percobaanPengujian", $data);
     }

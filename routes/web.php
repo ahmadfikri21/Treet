@@ -38,7 +38,7 @@ Route::post('/partisipan/storeJawaban', [PartisipanController::class,'storeJawab
 Route::get('/partisipan/selesaiPengujian', [PartisipanController::class,'selesaiPengujian'])->middleware(['loggedIn','tester']);
 
 // === Percobaan Pengujian ===
-Route::get('/partisipan/percobaanPengujian', [PartisipanController::class,'percobaanPengujian'])->middleware(['loggedIn','tester']);
+Route::get('/partisipan/percobaanPengujian', [PartisipanController::class,'percobaanPengujian'])->middleware(['loggedIn','tester','SedangPengujian']);
 Route::get('/partisipan/selesaiPengujian/{percobaan}', [PartisipanController::class,'selesaiPengujian'])->middleware(['loggedIn','tester']);
 
 // === edit Profile ===
